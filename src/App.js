@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import Logo from "./Components/Logo/Logo";
+import SearchBar from "./Components/SearchBar/SearchBar";
 
 function App() {
+  const [queryString, setQueryString] = useState("");
+  const [page, setPage] = useState(1);
+  const [num_pages_results, setNumPagesAndResults] = useState({
+    total_pages: 0,
+    total_results: 0,
+    present_results: 0,
+  });
+
+  const handlePageChange = (event, value) => {
+    setPage(value);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Logo />
+      <SearchBar queryString={queryString} setQueryString={setQueryString} />
     </div>
   );
 }
