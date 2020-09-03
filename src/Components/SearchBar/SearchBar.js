@@ -30,7 +30,14 @@ const SearchBar = (props) => {
   };
 
   return (
-    <form className={classes.root} noValidate autoComplete="off">
+    <form
+      className={classes.root}
+      noValidate
+      autoComplete="off"
+      onSubmit={(e) => {
+        e.preventDefault();
+      }}
+    >
       <TextField
         id="filled-basic"
         value={props.queryString}
