@@ -1,25 +1,42 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 import Logo from "./Components/Logo/Logo";
-import SearchBar from "./Components/SearchBar/SearchBar";
+/* import Iframe from "react-iframe"; */
+import CardList from "./Components/CardList/CardList";
+import GitHubButton from "react-github-btn";
 
 function App() {
-  const [queryString, setQueryString] = useState("");
-  const [page, setPage] = useState(1);
-  const [num_pages_results, setNumPagesAndResults] = useState({
-    total_pages: 0,
-    total_results: 0,
-    present_results: 0,
-  });
-
-  const handlePageChange = (event, value) => {
-    setPage(value);
-  };
-
   return (
     <div className="App">
       <Logo />
-      <SearchBar queryString={queryString} setQueryString={setQueryString} />
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          flexFlow: "column",
+        }}
+      >
+        <GitHubButton
+          href="https://github.com/vimaljais"
+          data-color-scheme="no-preference: dark; light: dark; dark: dark;"
+          data-size="small"
+          aria-label="Made by Vimal Jaiswal"
+        >
+          Made by Vimal Jaiswal
+        </GitHubButton>
+      </div>
+      <CardList />
+
+      {/*       <CardList queryString={queryString} /> */}
+      {/*       <Iframe
+        url="https://databasegdriveplayer.xyz//player.php?imdb=tt1285016"
+        width="450px"
+        height="450px"
+        id="myId"
+        className="myClassname"
+        display="initial"
+        position="relative"
+      /> */}
     </div>
   );
 }

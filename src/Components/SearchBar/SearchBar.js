@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField, InputAdornment, Button } from "@material-ui/core";
 
@@ -18,25 +18,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const scrollToRef = (ref) => {
-  window.scrollTo({
-    top: 0,
-    left: 0,
-    behavior: "smooth",
-  });
-};
-
 const SearchBar = (props) => {
   const classes = useStyles();
-  const myRef = useRef(null);
-
-  const handleChange = (val) => {
-    props.setQueryString(val);
-    if (val.length > 0) {
-      scrollToRef(myRef);
-    }
-  };
-
   const clearInput = () => {
     props.setQueryString("");
     window.scrollTo({
@@ -53,7 +36,7 @@ const SearchBar = (props) => {
         value={props.queryString}
         label="Search Movie"
         variant="filled"
-        onChange={(e) => handleChange(e.target.value)}
+        onChange={(e) => props.onSearchChange(e.target.value)}
         InputProps={
           props.queryString.length > 0
             ? {
