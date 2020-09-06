@@ -70,21 +70,14 @@ const CardList = () => {
       setLoading(true);
     }
 
-    console.log(queryString);
     if (queryString.length > 0) {
       setLoading(true);
       const getmovies = async (query) => {
         try {
           const res = await fetch(
-            "https://arcane-sierra-37425.herokuapp.com/getmovies",
+            `https://arcane-sierra-37425.herokuapp.com/getmovies/?qs=${queryString}&page=${page}`,
             {
-              method: "post",
               signal: abortController.signal,
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                page: page,
-                quary: queryString,
-              }),
             }
           );
           if (res.status >= 200 && res.status < 400) {
